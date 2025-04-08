@@ -7,6 +7,8 @@ import About from "./components/About";
 import Gallery from "./components/Gallary";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/SignUp" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );

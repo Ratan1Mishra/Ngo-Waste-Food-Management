@@ -13,6 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .logo {
@@ -24,12 +25,23 @@
   display: none;
   font-size: 1.5rem;
   cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.nav-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .nav-links {
   display: flex;
   gap: 1.5rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links li a {
@@ -38,12 +50,29 @@
   transition: color 0.3s;
 }
 
-.nav-links li a:hover {
+.nav-links li a:hover,
+.nav-links li a.active {
   color: #ffeb3b;
 }
 
-.nav-links li a.active {
-  color: #ffeb3b;
+/* Login Button */
+.login-button {
+  padding: 10px 22px;
+  background: linear-gradient(135deg, #00c897, #0e76a8);
+  border-radius: 25px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 200, 151, 0.3);
+  transition: all 0.3s ease;
+  margin-left: 4px;
+}
+
+.login-button:hover {
+  background: linear-gradient(135deg, #0e76a8, #00c897);
+  box-shadow: 0 6px 18px rgba(0, 200, 151, 0.5);
+  transform: translateY(-2px);
 }
 
 /* Mobile Styles */
@@ -52,19 +81,29 @@
     display: block;
   }
 
+  .nav-group {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
   .nav-links {
     display: none;
     flex-direction: column;
     gap: 1rem;
     background-color: #4caf50;
-    position: absolute;
-    top: 100%;
-    left: 0;
     width: 100%;
     padding: 1rem 0;
   }
 
   .nav-links.open {
     display: flex;
+  }
+
+  .login-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0 0 0;
   }
 }

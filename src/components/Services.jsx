@@ -45,7 +45,7 @@ const Services = () => {
     <section className="py-12 bg-gray-100 text-center">
     <Menu/>
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Our Services</h2>
+        <h2 className="events-heading">Our Services</h2>
         <div className="grid md:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div key={index} className="p-6 bg-white shadow-lg rounded-2xl hover:shadow-xl transition-all">

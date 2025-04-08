@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Menu from "./Menu";
 import Footer from "./footer";
 import './Home.css';
@@ -73,6 +74,8 @@ const VolunteerCard = ({ volunteer }) => {
 };
 
 const Home = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="home-container">
       <Menu />
@@ -84,7 +87,9 @@ const Home = () => {
             dolore magnt, sed do eiusmod.
           </p>
           <div className="home-actions">
-            <button className="home-button">Donate</button>
+            <button className="home-button" onClick={() => navigate("/donate")}>
+              Donate
+            </button>
             <div className="home-contact"> 📞+12 1325 41</div>
           </div>
         </div>
@@ -136,7 +141,7 @@ const Home = () => {
             <h3 className="event-title">Donation is Hope</h3>
             <div className="event-details">
               <span>🕗 8:30 - 9:30am</span>
-              <span>📅 18.01.2021</span>
+              <span>🗕️ 18.01.2021</span>
               <span>📍 Athens, Greece</span>
             </div>
           </div>
@@ -148,7 +153,7 @@ const Home = () => {
             <h3 className="event-title">A hand for Children</h3>
             <div className="event-details">
               <span>🕗 8:30 - 9:30am</span>
-              <span>📅 18.01.2021</span>
+              <span>🗕️ 18.01.2021</span>
               <span>📍 Athens, Greece</span>
             </div>
           </div>
@@ -163,17 +168,17 @@ const Home = () => {
           ))}
         </div>
         <div className="hero-section">
-                <div className="hero-overlay">
-                    <div className="hero-content">
-                        <h2>Let's Change The World With Humanity</h2>
-                    </div>
-                    <div className="hero-button">
-                        <button className="volunteer-button">Become A Volunteer</button>
-                    </div>
-                </div>
+          <div className="hero-overlay">
+            <div className="hero-content">
+              <h2>Let's Change The World With Humanity</h2>
             </div>
+            <div className="hero-button">
+              <button className="volunteer-button">Become A Volunteer</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

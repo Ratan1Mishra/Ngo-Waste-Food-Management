@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './login.css';
+import './signup.css';
 import Footer from "./footer";
 import Menu from "./Menu";
 
-function Login() {
+function Signup() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false); // ✅ New state for success popup
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [success, setSuccess] = useState(false); // ✅ New state for popup
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,37 +19,38 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const savedUser = JSON.parse(localStorage.getItem("user"));
+    localStorage.setItem("user", JSON.stringify(formData));
+    setSuccess(true); // ✅ Show popup
 
-    if (
-      savedUser &&
-      formData.email === savedUser.email &&
-      formData.password === savedUser.password
-    ) {
-      setSuccess(true); // ✅ Show success popup
-      setError("");
-
-      setTimeout(() => {
-        navigate("/home");
-      }, 1500); // Wait and redirect
-    } else {
-      setError("Invalid email or password");
-    }
+    // Redirect after 1.5 seconds
+    setTimeout(() => {
+      navigate("/login");
+    }, 1500);
   };
 
   return (
-    <div className="login-page">
+    <div className="signup-page">
       <Menu />
-      <div className="login-container">
-        <form className="login-form" onSubmit={handleSubmit}>
-          <h2>Welcome Back</h2>
-          {error && <p className="error">{error}</p>}
+      <div className="signup-container">
+        <form className="signup-form" onSubmit={handleSubmit}>
+          <h2>Create Account</h2>
+          <div className="input-group">
+            <i className="fas fa-user"></i>
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+            />
+          </div>
           <div className="input-group">
             <i className="fas fa-envelope"></i>
             <input
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder="Email Address"
               value={formData.email}
               onChange={handleChange}
               required
@@ -63,16 +67,16 @@ function Login() {
               required
             />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit">Sign Up</button>
           <p className="redirect">
-            Don't have an account? <a href="/signup">Sign Up</a>
+            Already have an account? <a href="/login">Login</a>
           </p>
         </form>
 
-        {/* ✅ Success Popup */}
+        {/* ✅ Success popup */}
         {success && (
           <div className="popup">
-            <p>Thanks for login!</p>
+            <p>Signup Successful!</p>
           </div>
         )}
       </div>
@@ -81,4 +85,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;
